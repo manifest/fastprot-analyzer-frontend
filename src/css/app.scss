@@ -1,0 +1,41 @@
+$footer-height: 50px;
+
+html, body {
+	height: 100%;
+}
+
+#wrap {
+	clear: both;
+	min-height: 100%;
+	height: auto !important;
+	margin-bottom: -$footer-height;
+}
+
+body footer {
+	clear: both;
+	position: relative;
+	height: $footer-height;
+
+	border-top-color: rgb(229, 229, 229);
+	border-top-style: solid;
+	border-top-width: 1px;
+
+	background-color: rgb(245, 245, 245);
+	background-image: none;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0% 0%;
+	background-clip: border-box;
+	background-origin: padding-box;
+	background-size: auto auto;
+
+	color: rgb(119, 119, 119);
+	a {
+		color: rgb(0, 136, 204)
+	}
+}
+
+.no-js #wrap .container {
+	display: none;
+}
+
