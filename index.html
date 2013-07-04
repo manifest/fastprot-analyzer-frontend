@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class='no-js' itemscope='' itemtype='http://schema.org/WebApplication' lang='en' ng-app='app'>
+  <head>
+    <title>FAST Protocol Parser/Analyzer</title>
+    <meta charset='utf8'>
+    <meta content='fast protocol analyzer, fast protocol parser' name='keywords'>
+    <meta content='0.1.0' name='page-version'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='business' name='audience'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <link href='http://fpaw.yanot.org' rel='canonical'>
+    <link href='https://plus.google.com/112726837250790706995' rel='author'>
+    <link href='https://plus.google.com/101810801003845460090' rel='publisher'>
+    <link href='css/bootstrap.min.css' media='screen' rel='stylesheet' type='text/css'>
+    <link href='css/app.css' media='screen' rel='stylesheet' type='text/css'>
+    <script src='js/modernizr.custom.62307.js'></script>
+    <script src='js/angular.min.js'></script>
+    <script src='js/app.js'></script>
+    <script src='js/fpas.js'></script>
+    <script src='js/misc.js'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-42241481-1', 'manifest.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body ng-controller='mainCtrl'>
+    <div id='wrap'>
+      <noscript>
+        <div class='alert alert-error text-center'>
+          <strong>JavaScript disabled.</strong>
+          Enable javascript in your browser settings, otherwise this application will not work.
+        </div>
+      </noscript>
+      <div class='container'>
+        <div class='row'>
+          <div class='span12'>
+            <h1>FAST Protocol Parser/Analyzer</h1>
+            <p>Upload your encoded message</p>
+            <input onchange='angular.element(this).scope().setFile(this.files)' type='file'>
+            <p>
+              Or see
+              <a href='#' ng-click='showExample()'>example</a>
+            </p>
+            <br>
+            <span>Current template is</span>
+            <a href="{{ templateUrl('rtsx') }}" ng-click='showCurrentTemplate()'>RTSX</a>
+            <br>
+            <a href='#' ng-click='templatesFeatureRequest()'>Want to use another one?</a>
+            <br>
+            <br>
+            <div ng-show='isObsoleteBrowser'>
+              <div class='alert alert-error'>
+                <strong>Obsolete browser.</strong>
+                Your browser does not support features required by this web application.
+              </div>
+            </div>
+            <div class='alert alert-{{ alert.type }}' ng-show='alert.show'>
+              <a class='close' data-dismiss='alert' href='#' ng-click='hideAlert()'>&times;</a>
+              <strong>{{ alert.title }}</strong>
+              {{ alert.descr }}
+            </div>
+            <table class='table table-condensed' ng-show='table.show'>
+              <thead>
+                <tr>
+                  <th>Tag</th>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody ng-repeat='row in table.data'>
+                <tr>
+                  <td>
+                    <a href='{{ makeTagLink(row.tag) }}' ng-click='showTagDescr()'>{{ row.tag }}</a>
+                  </td>
+                  <td>{{ row.name }}</td>
+                  <td>{{ row.value }}</td>
+                  <td>
+                    <span ng-repeat='label in row.labels'>
+                      <abbr class='label label-info' title='{{ label.descr }}'>{{ label.name }}</abbr>
+                    </span>
+                    <span>{{ row.descr }}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class='container'>
+        <div class='text-center'>
+          All services provided are "as is" with no express or implied warranty for accuracy or accessibility.
+          <br>
+          Built on top of&nbsp;<a href='https://github.com/manifest/fastprot-analyzer-backend'>Fast Protocol Analyzer Service</a>&#x2e;
+          Developed by&nbsp;<a href='mailto:ae.nesterov@gmail.com'>Andrei Nesterov</a>&nbsp;&copy; 2013.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
