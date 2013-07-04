@@ -2,6 +2,10 @@
 
 Web client for [FAST Protocol Analyzer Service][fpas].
 
+### Try it Now
+
+http://manifest.github.io/fastprot-analyzer-frontend
+
 ### Depends on
 
 This project uses [Bundler][bundler] for setting up an aplication environment, and [Middleman][middleman] for building sources. Install them:
